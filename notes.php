@@ -17,14 +17,14 @@
 <header>
   <!-- Fixed navbar -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">USPN</a>
+    <a class="navbar-brand" href="index.php">USPN</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="notes.html">Notes</a>
+          <a class="nav-link" href="notes.php">Notes</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Élèves</a>
@@ -101,7 +101,7 @@
     die('Erreur lors de la connexion : ' . $e->getMessage());
   }
 
-  $reponse = $bdd->query(SELECT * FROM ETUDIANT);
+  $reponse = $bdd->query('SELECT * FROM ETUDIANT');
   while ($donnees = $reponse->fetch()) {
   
   ?>
@@ -109,8 +109,8 @@
   <tbody>
     <tr>
       <th scope="row"><?php $donnees['etu_id'] ?></th>
-      <td><?php $donnees['etu_nom'] ?></td>
-      <td><?php $donnees['etu_prenom'] ?></td>
+      <td><?php echo $donnees['etu_nom'] ?></td>
+      <td><?php echo $donnees['etu_prenom'] ?></td>
       <td>DUT Informatique</td>
       <td><img src="images/edit.svg"></td>
     </tr>
