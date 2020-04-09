@@ -95,14 +95,10 @@
   </thead>
 
   <?php
-  try {
-    $bdd = new PDO('mysql:host=localhost;dbname=gestion_etudiants;charset=utf8', 'projet', 'iutv');
-  } catch (Exception $e) {
-    die('Erreur lors de la connexion : ' . $e->getMessage());
-  }
+    require_once('dbConnection.php');
 
-  $reponse = $bdd->query('SELECT * FROM ETUDIANT');
-  while ($donnees = $reponse->fetch()) {
+    $reponse = $bdd->query('SELECT * FROM ETUDIANT');
+    while ($donnees = $reponse->fetch()) {
   
   ?>
 
