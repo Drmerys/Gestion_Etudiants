@@ -108,7 +108,7 @@
       <td><?php echo $donnees['etu_nom'] ?></td>
       <td><?php echo $donnees['etu_prenom'] ?></td>
       <td>DUT Informatique</td>
-      <td><img src="../images/edit.svg"></td>
+      <td><img src="images/edit.svg"></td>
     </tr>
 
   <?php
