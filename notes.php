@@ -93,63 +93,32 @@
       <th scope="col">Notes</th>
     </tr>
   </thead>
+
+  <?php
+  try {
+    $bdd = new PDO('mysql:host=localhost;dbname=gestion_etudiants;charset=utf8', 'projet', 'iutv');
+  } catch (Exception $e) {
+    die('Erreur lors de la connexion : ' . $e->getMessage());
+  }
+
+  $reponse = $bdd->query(SELECT * FROM ETUDIANT);
+  while ($donnees = $reponse->fetch()) {
+  
+  ?>
+
   <tbody>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
+      <th scope="row"><?php $donnees['etu_id'] ?></th>
+      <td><?php $donnees['etu_nom'] ?></td>
+      <td><?php $donnees['etu_prenom'] ?></td>
       <td>DUT Informatique</td>
       <td><img src="images/edit.svg"></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>DUT Informatique</td>
-      <td><img src="images/edit.svg"></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>DUT Informatique</td>
-      <td><img src="images/edit.svg"></td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>Mark</td>
-      <td>Mallow</td>
-      <td>DUT Informatique</td>
-      <td><img src="images/edit.svg"></td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td>Pierre</td>
-      <td>Logic</td>
-      <td>DUT Informatique</td>
-      <td><img src="images/edit.svg"></td>
-    </tr>
-    <tr>
-      <th scope="row">6</th>
-      <td>Shaun</td>
-      <td>Cow</td>
-      <td>DUT Informatique</td>
-      <td><img src="images/edit.svg"></td>
-    </tr>
-    <tr>
-      <th scope="row">7</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>DUT Informatique</td>
-      <td><img src="images/edit.svg"></td>
-    </tr>
-    <tr>
-      <th scope="row">8</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>DUT Informatique</td>
-      <td><img src="images/edit.svg"></td>
-    </tr>
+
+  <?php
+  }
+  $reponse->closeCursor();
+  ?>
   </tbody>
 </table>
 </div>
