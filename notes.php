@@ -108,7 +108,7 @@
 
   <tbody>
     <tr>
-      <th scope="row"><?php $donnees['etu_id'] ?></th>
+      <th scope="row"><?php echo $donnees['etu_id'] ?></th>
       <td><?php echo $donnees['etu_nom'] ?></td>
       <td><?php echo $donnees['etu_prenom'] ?></td>
       <td>DUT Informatique</td>
