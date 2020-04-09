@@ -142,31 +142,23 @@
       </div>
       <div class="modal-body">
         
-        <form>
+        <form method="post" action="addEleve.php">
           <label>Nom</label>
           <div class="form-group">
-          <input type="text" class="form-control" name="nom">
+          <input type="text" class="form-control" name="etu_nom">
           </div>
           <label>Prénom</label>
           <div class="form-group">
-          <input type="text" class="form-control" name="prenom">
+          <input type="text" class="form-control" name="etu_prenom">
           </div>
           <div class="form-group">
-          <label>Section</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>DUT Informatique</option>
-            <option>DUT GEA</option>
-            <option>UFR</option>
-            <option>L3 Informatique</option>
-            <option>Institut Galilée</option>
-          </select>
           </div>
-        </form>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-primary">Sauvegarder</button>
+        <button type="submit" class="btn btn-primary">Sauvegarder</button>
+        </form>
       </div>
     </div>
   </div>
