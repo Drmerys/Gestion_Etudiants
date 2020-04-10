@@ -140,10 +140,10 @@
       </div>
       <div class="modal-body">
         
-        <form method="post" action="modifyEleve.php">
+        <form method="get" action="modifyEleve.php">
           <label>Identifiant</label>
           <div class="form-group">
-          <input type="text" class="form-control" name="etu_id" value="<?php echo $id; ?>" disabled>
+          <input type="text" class="form-control" name="etu_id" value="<?php echo $id; ?>">
           </div>
           <label>Nom</label>
           <div class="form-group">
