@@ -11,46 +11,9 @@
 </head>
 <body>
 
-</body>
-</html>
-
-<header>
-  <!-- Fixed navbar -->
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="index.php">USPN</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Notes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="etudiants.php">Élèves</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Calendrier</a>
-        </li>
-      </ul>
-
-<ul class="nav justify-content-end">
-  <li class="nav-item">
-    <div class="btn-group" role="group">
-      <button id="btnGroupDrop1" type="button" class="btn btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">NOM Prénom
-      </button>
-      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
-        <a class="dropdown-item" href="#">Profil</a>
-        <a class="dropdown-item" href="#">Déconnexion</a>
-      </div>
-    </div>
-  </li>
-  
-</ul>
-
-    </div>
-  </nav>
-</header>
+<?php
+require "header.php";
+?>
 
 <!-- Begin page content -->
 <main role="main" class="flex-shrink-0">
@@ -74,9 +37,7 @@
       $section = $donnees['etu_section'];
       $naissance = $donnees['etu_naissance'];
       $telephone = $donnees['etu_telephone'];
-    ?> 
-    <?php 
-    } 
+    }
     ?>
 
     <h1 class="mt-5">Profil de l'élève</h1>
@@ -88,25 +49,29 @@
       <div class="card">
         <h5 class="card-header">Informations</h5>
             <table class="table">
+              <tr class="d-none">
+                <th>ID</th>
+                <td><?php echo $id; ?></td>
+              </tr>
               <tr>
                 <th>Prénom</th>
-                <td><?php echo $prenom ?></td>
+                <td><?php echo $prenom; ?></td>
               </tr>
               <tr>
                 <th>Nom</th>
-                <td><?php echo $nom ?></td>
+                <td><?php echo $nom; ?></td>
               </tr>
               <tr>
                 <th>Section</th>
-                <td><?php echo $section ?></td>
+                <td><?php echo $section; ?></td>
               </tr>
               <tr>
                 <th>Date de naissance</th>
-                <td><?php echo $naissance ?></td>
+                <td><?php echo $naissance; ?></td>
               </tr>
               <tr>
                 <th>Numéro de téléphone</th>
-                <td><?php echo $telephone ?></td>
+                <td><?php echo $telephone; ?></td>
               </tr>
             </table>
 
@@ -120,15 +85,6 @@
   </div>
 </main>
 
-
-
-
-<footer class="footer mt-auto py-3">
-  <div class="container">
-    <span class="text-muted">ENT - Projet DUT Informatique AS - 2020</span>
-  </div>
-</footer>
-
 <div class="modal fade" id="modifyProfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -141,8 +97,7 @@
       <div class="modal-body">
         
         <form method="get" action="modifyEleve.php">
-          <label>Identifiant</label>
-          <div class="form-group">
+          <div class="form-group d-none">
           <input type="text" class="form-control" name="etu_id" value="<?php echo $id; ?>">
           </div>
           <label>Nom</label>
@@ -176,3 +131,10 @@
     </div>
   </div>
 </div>
+
+<?php
+require "footer.php";
+?>
+
+</body>
+</html>
