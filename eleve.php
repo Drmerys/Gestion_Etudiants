@@ -37,52 +37,77 @@ require "header.php";
       $section = $donnees['etu_section'];
       $naissance = $donnees['etu_naissance'];
       $telephone = $donnees['etu_telephone'];
+      $nomresp = $donnees['etu_nom_responsable'];
+      $prenomresp = $donnees['etu_prenom_responsable'];
+      $niveau = $donnees['etu_niveau_scolaire'];
     }
     ?>
 
     <h1 class="mt-5">Profil de l'élève</h1>
 
   </div>
-
   <div class="container">
-    <div class="row col-sm-5">
-      <div class="card">
-        <h5 class="card-header">Informations</h5>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <h5 class="card-header">Informations</h5>
+              <table class="table">
+                <tr class="d-none">
+                  <th>ID</th>
+                  <td><?php echo $id; ?></td>
+                </tr>
+                <tr>
+                  <th>Prénom</th>
+                  <td><?php echo $prenom; ?></td>
+                </tr>
+                <tr>
+                  <th>Nom</th>
+                  <td><?php echo $nom; ?></td>
+                </tr>
+                <tr>
+                  <th>Section</th>
+                  <td><?php echo $section; ?></td>
+                </tr>
+                <tr>
+                  <th>Date de naissance</th>
+                  <td><?php echo $naissance; ?></td>
+                </tr>
+                <tr>
+                  <th>Numéro de téléphone</th>
+                  <td><?php echo $telephone; ?></td>
+                </tr>
+              </table>
+
+              <div class="card-footer">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyProfil">
+                  Modifier les informations
+                </button>
+              </div>      
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card">
+        <h5 class="card-header">Scolarité</h5>
             <table class="table">
               <tr class="d-none">
                 <th>ID</th>
                 <td><?php echo $id; ?></td>
               </tr>
               <tr>
-                <th>Prénom</th>
-                <td><?php echo $prenom; ?></td>
+                <th>Responsable</th>
+                <td><?php echo "<b>" . $nomresp . "</b> " . $prenomresp; ?></td>
               </tr>
               <tr>
-                <th>Nom</th>
-                <td><?php echo $nom; ?></td>
-              </tr>
-              <tr>
-                <th>Section</th>
-                <td><?php echo $section; ?></td>
-              </tr>
-              <tr>
-                <th>Date de naissance</th>
-                <td><?php echo $naissance; ?></td>
-              </tr>
-              <tr>
-                <th>Numéro de téléphone</th>
-                <td><?php echo $telephone; ?></td>
+                <th>Niveau scolaire</th>
+                <td><?php echo $niveau; ?></td>
               </tr>
             </table>
 
-            <div class="card-footer">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyProfil">
-                Modifier les informations
-              </button>
-            </div>      
       </div>
-    </div>
-  </div>
+          </div>
+          </div>
+          </div>
 </main>
 
 <div class="modal fade" id="modifyProfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
