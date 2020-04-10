@@ -25,10 +25,10 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="src/notes.php">Notes</a>
+          <a class="nav-link" href="#">Notes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Élèves</a>
+          <a class="nav-link" href="etudiants.php">Élèves</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Calendrier</a>

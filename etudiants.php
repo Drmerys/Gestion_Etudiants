@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Accueil</title>
+	<title>Liste des étudiants</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/sticky-footer-navbar.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -24,10 +24,10 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="notes.php">Notes</a>
+          <a class="nav-link" href="#">Notes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Élèves</a>
+          <a class="nav-link" href="etudiants.php">Élèves</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Calendrier</a>
@@ -56,7 +56,7 @@
 <main role="main" class="flex-shrink-0">
   <div class="container">
 
-    <h1 class="mt-5">Notes des étudiants</h1>
+    <h1 class="mt-5">Liste des étudiants</h1>
 
   </div>
 
@@ -86,16 +86,20 @@
     <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Nom</th>
       <th scope="col">Prénom</th>
       <th scope="col">Section</th>
-      <th scope="col">Notes</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
 
   <?php
-    require_once('dbConnection.php');
+
+    try {
+      $bdd = new PDO('mysql:host=localhost;dbname=gestion_etudiants;charset=utf8', 'projet', 'iutv');
+    } catch (Exception $e) {
+      die('Erreur lors de la connexion : ' . $e->getMessage());
+    }
 
     $reponse = $bdd->query('SELECT * FROM ETUDIANT');
     while ($donnees = $reponse->fetch()) {
@@ -104,11 +108,10 @@
 
   <tbody>
     <tr>
-      <th scope="row"><?php echo $donnees['etu_id'] ?></th>
       <td><?php echo $donnees['etu_nom'] ?></td>
       <td><?php echo $donnees['etu_prenom'] ?></td>
-      <td>DUT Informatique</td>
-      <td><img src="images/edit.svg"></td>
+      <td><?php echo $donnees['etu_section'] ?></td>
+      <td><a href="suppEleve.php?etu_id=<?php echo $donnees['etu_id'];?>"><img src="images/x-circle.svg"></a>    <a href="eleve.php?etu_id=<?php echo $donnees['etu_id'];?>"><img src="images/eye.svg"></a></td>
     </tr>
 
   <?php
@@ -147,7 +150,9 @@
           <div class="form-group">
           <input type="text" class="form-control" name="etu_prenom">
           </div>
+          <label>Section</label>
           <div class="form-group">
+          <input type="text" class="form-control" name="etu_section">
           </div>
 
       </div>
