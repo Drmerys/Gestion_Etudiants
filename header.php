@@ -25,6 +25,7 @@
       </button>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
         <a class="dropdown-item" href="#">Profil</a>
+        <a class="dropdown-item" href="espace-prof.php">Espace profs</a>
         <a class="dropdown-item" href="#">Déconnexion</a>
       </div>
     </div>
