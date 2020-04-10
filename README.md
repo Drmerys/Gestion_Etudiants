@@ -1,6 +1,6 @@
-#Projet BDD
+# Projet BDD
 
-##Membres du groupe :
+## Membres du groupe :
 
 - Rayhane SAADOUNI
 - Kadijétou GASSAMA
@@ -9,7 +9,7 @@
 - Nicolas BATAILLARD
 - Matthieu CAMPAGNE
 
-##Technologies utilisées : 
+## Technologies utilisées : 
 
 - Bootstrap 4.4
 - JS
