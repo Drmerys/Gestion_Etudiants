@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?php $donnees['etu_nom']; ?></title>
+	<title>Profil élève</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/sticky-footer-navbar.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -68,9 +68,12 @@
 
     while ($donnees = $reponse->fetch())
     { 
+      $id = $donnees['etu_id'];
       $nom = $donnees['etu_nom'];
       $prenom = $donnees['etu_prenom'];
       $section = $donnees['etu_section'];
+      $naissance = $donnees['etu_naissance'];
+      $telephone = $donnees['etu_telephone'];
     ?> 
     <?php 
     } 
@@ -81,17 +84,40 @@
   </div>
 
   <div class="container">
+    <div class="row col-sm-5">
+      <div class="card">
+        <h5 class="card-header">Informations</h5>
+            <table class="table">
+              <tr>
+                <th>Prénom</th>
+                <td><?php echo $prenom ?></td>
+              </tr>
+              <tr>
+                <th>Nom</th>
+                <td><?php echo $nom ?></td>
+              </tr>
+              <tr>
+                <th>Section</th>
+                <td><?php echo $section ?></td>
+              </tr>
+              <tr>
+                <th>Date de naissance</th>
+                <td><?php echo $naissance ?></td>
+              </tr>
+              <tr>
+                <th>Numéro de téléphone</th>
+                <td><?php echo $telephone ?></td>
+              </tr>
+            </table>
 
-    <p>
-      Nom : <?php echo $nom; ?>
-      <br>
-      Prénom : <?php echo $prenom; ?>
-      <br>
-      Section : <?php echo $section; ?>
-    </p>
-
+            <div class="card-footer">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyProfil">
+                Modifier les informations
+              </button>
+            </div>      
+      </div>
+    </div>
   </div>
-
 </main>
 
 
@@ -102,3 +128,51 @@
     <span class="text-muted">ENT - Projet DUT Informatique AS - 2020</span>
   </div>
 </footer>
+
+<div class="modal fade" id="modifyProfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modifier l'élève</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <form method="post" action="modifyEleve.php">
+          <label>Identifiant</label>
+          <div class="form-group">
+          <input type="text" class="form-control" name="etu_id" value="<?php echo $id; ?>" disabled>
+          </div>
+          <label>Nom</label>
+          <div class="form-group">
+          <input type="text" class="form-control" name="etu_nom" value="<?php echo $nom; ?>">
+          </div>
+          <label>Prénom</label>
+          <div class="form-group">
+          <input type="text" class="form-control" name="etu_prenom" value="<?php echo $prenom; ?>">
+          </div>
+          <label>Section</label>
+          <div class="form-group">
+          <input type="text" class="form-control" name="etu_section" value="<?php echo $section; ?>">
+          </div>
+          <label>Date de naissance</label>
+          <div class="form-group">
+          <input type="date" class="form-control" name="etu_naissance" value="<?php echo $naissance; ?>">
+          </div>
+          <label>Téléphone</label>
+          <div class="form-group">
+          <input type="int" class="form-control" name="etu_telephone" value="<?php echo $telephone; ?>">
+          </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        <button type="submit" class="btn btn-primary">Sauvegarder</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
