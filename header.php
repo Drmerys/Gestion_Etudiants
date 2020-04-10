@@ -14,7 +14,7 @@
           <a class="nav-link" href="etudiants.php">Élèves</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Calendrier</a>
+          <a class="nav-link" href="calendrier.php">Calendrier</a>
         </li>
       </ul>
 
