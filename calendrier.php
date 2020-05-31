@@ -44,9 +44,7 @@ require "header.php";
   </div>
 
 </main>
-
 </body>
-
 </html>
 
 <?php
