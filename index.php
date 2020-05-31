@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+  require_once("dbConnection.php");
+
+  if (isset($_SESSION['id']))
+  { 
+    $requser = $bdd->prepare("SELECT *  FROM membres WHERE id = ? ");
+    $requser->execute(array($_SESSION['id']));
+    $user = $requser->fetch();
+    header("location: accueil.php");
+  }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,13 +24,11 @@
 </head>
 <body>
 
-<form class="form-signin">
+<form class="form-signin" method="POST" action="verifyConnection.php">
   <center><img class="mb-4" src="images/student.svg" alt="" width="72" height="72">
   <h1 class="h3 mb-3 font-weight-normal">S'identifier</h1></center>
-  <label for="inputEmail" class="sr-only"></label>
-  <input type="email" id="inputEmail" class="form-control" placeholder="Prénom NOM" required autofocus>
-  <label for="inputPassword" class="sr-only"></label>
-  <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+  <input type="text" id="pseudo" name="pseudo" class="form-control" placeholder="Prénom NOM" required autofocus>
+  <input type="password" id="pass" name="pass" class="form-control" placeholder="Mot de passe" required>
   <button class="btn btn-lg btn-primary btn-block" type="submit">Entrer</button>
   <center><p class="mt-5 mb-3 text-muted">&copy; ENT - Projet DUT Informatique AS - 2020</p></center>
 </form>

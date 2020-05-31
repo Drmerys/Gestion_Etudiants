@@ -40,14 +40,14 @@ require "header.php";
           die('Erreur lors de la connexion : ' . $e->getMessage());
         }
 
-        $reponse = $bdd->query('SELECT * FROM ENSEIGNANT');
+        $reponse = $bdd->query('SELECT * FROM ENSEIGNANT ORDER BY ens_nom');
         while ($donnees = $reponse->fetch()) {
       
       ?>
 
       <tbody>
         <tr>
-          <td><?php echo $donnees['ens_nom'] ?></td>
+          <td><?php echo strtoupper($donnees['ens_nom']) ?></td>
           <td><?php echo $donnees['ens_prenom'] ?></td>
           <td><?php echo $donnees['ens_mail'] ?></td>
         </tr>
