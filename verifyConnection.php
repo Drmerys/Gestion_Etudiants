@@ -13,7 +13,7 @@ $isPasswordCorrect = password_verify($_POST['pass'], $resultat['pass']);
 
 if (!$resultat)
 {
-    echo "t'es sur t'as un compte bouffon ?";
+    echo "t'es sûr d'avoir un compte  ?";
 }
 else
 {
@@ -24,7 +24,7 @@ else
         header('location: accueil.php');
     }
     else {
-        echo "tu connais pas ton mot de passe bouffon ?";
+        echo "tu connais pas ton mot de passe ?";
         //header('location: index.php');
     }
 }
