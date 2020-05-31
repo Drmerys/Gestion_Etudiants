@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+  require_once("dbConnection.php");
+
+  if (isset($_SESSION['id']))
+  { 
+    $requser = $bdd->prepare("SELECT *  FROM membres WHERE id = ? ");
+    $requser->execute(array($_SESSION['id']));
+    $user = $requser->fetch();
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -155,3 +168,13 @@ require_once("header.php");
 
 </body>
 </html>
+
+<?php
+
+  }
+  else
+  {
+    header("Location: index.php");
+  }
+
+?>
