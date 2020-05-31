@@ -86,7 +86,7 @@ require "header.php";
   ?>
 
   <tbody>
-    <tr class="donneesEleves">
+    <tr class="donneesEleves" style="cursor: pointer" onclick="window.location = 'notes-eleves.php?id=<?php echo $donnees['etu_id'];?>';">
       <td><?php echo $donnees['etu_nom'] ?></td>
       <td><?php echo $donnees['etu_prenom'] ?></td>
       <td><?php echo $donnees['etu_section'] ?></td>

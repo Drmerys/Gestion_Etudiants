@@ -15,5 +15,5 @@ require_once('dbConnection.php');
   	));
 	}
   
-  header('Location: notes.php');
+  header("location:".  $_SERVER['HTTP_REFERER']);
  ?>
