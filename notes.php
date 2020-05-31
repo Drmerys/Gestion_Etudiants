@@ -34,7 +34,6 @@ session_start();
     <?php
     	require_once("dbConnection.php");
 
-	    /*$reponse = $bdd->query('SELECT * FROM NOTES WHERE etu_id =' . $_GET['etu_id'] . ' ');*/
 	    /*$reponse = 'SELECT * FROM ETUDIANT JOIN NOTES
 	     ON ETUDIANT.etu_id = NOTES.not_id';*/
 
@@ -82,10 +81,6 @@ session_start();
                   <th>Notes</th>
                   <td><?php echo $not_notes; ?></td>
                 </tr>
-                <!--<tr>
-                  <th>Moyènne</th>
-                  <td><?php echo $section; ?></td>
-                </tr> -->
                 <tr>
                   <th>Date</th>
                   <td><?php echo $not_date; ?></td>
