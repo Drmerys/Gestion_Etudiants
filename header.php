@@ -21,7 +21,7 @@
 <ul class="nav justify-content-end">
   <li class="nav-item">
     <div class="btn-group" role="group">
-      <button id="btnGroupDrop1" type="button" class="btn btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">NOM Prénom
+      <button id="btnGroupDrop1" type="button" class="btn btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['pseudo']; ?>
       </button>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
         <a class="dropdown-item" href="#">Profil</a>
