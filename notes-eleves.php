@@ -51,8 +51,9 @@ session_start();
         </button>
       </div>
       <div class="modal-body">
-        
-      	<form method="POST" action="addNotes.php">
+      	
+        <?php $idEleve = $_GET['id']; ?>
+      	<form method="POST" action="addNotes.php?idElv=<?= $idEleve;?>">
 		  <div class="form-group">
 		    <label>Matière</label>
 		    <select class="form-control" name="not_matiere">
@@ -69,7 +70,7 @@ session_start();
 		  </div>
 		  <div class="form-group">
 		    <label>Note</label>
-		    <input type="text" class="form-control" name="note" placeholder="15">
+		    <input type="text" class="form-control" name="not_notes" placeholder="15">
 		  </div>
 		  <div class="form-group">
 		    <label>Date</label>
