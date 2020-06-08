@@ -31,7 +31,12 @@ session_start();
 
 <body>
 
-	<h1 class="starter-template">Notes de l'élève</h1>
+	<?php
+		$nom = $bdd->query('SELECT * FROM ETUDIANT WHERE etu_id ="' .$_GET['id'].'"');
+		$name = $nom->fetch();
+	?>
+
+	<h1 class="starter-template">Notes de <?= $name['etu_prenom']; ?></h1>
 
 	<div class="container">
 
