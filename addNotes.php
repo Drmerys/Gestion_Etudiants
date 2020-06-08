@@ -1,26 +1,15 @@
 <?php
-require_once('dbConnection.php');
 
-	$idEleve = $bdd->prepare('SELECT etu_id FROM ETUDIANT');
-	$idEleve->execute();
-	$idData = $idEleve->fetch();
+	require_once("dbConnection.php");
 
-		$userDate = $_POST['not_date'];
-		$idEl = $_GET['idElv'];
-		//$date = date("Y-m-d", strtotime($date));
-
-		if ($idEl === $idData['etu_id']) {
-
-		$req = $bdd->prepare('INSERT INTO NOTES(not_matiere, not_notes , not_date ) VALUES(:not_matiere, :not_notes, :not_date)');
-  		$req->execute(array(
+  	$req = $bdd->prepare('INSERT INTO NOTES(not_matiere, not_notes, not_date, not_id_etu) VALUES(:not_matiere, :not_notes, :not_date, :not_id_etu)');
+  	$req->execute(array(
   		'not_matiere' => $_POST['not_matiere'],
   		'not_notes' => $_POST['not_notes'],
-  		'not_date' => $userDate 
-  			));
-		}
-		else{
-			echo "Id différent !";
-		}
+  		'not_date' => $_POST['not_date'],
+  		'not_id_etu' => $_GET['id']
+  	));
   
-  	header('Location: notes-eleves.php');
- ?>
+  header("location:".  $_SERVER['HTTP_REFERER']);
+
+?>

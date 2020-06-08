@@ -26,17 +26,70 @@ session_start();
 
 <?php
 		require_once("header.php");
+		$reponse = $bdd->query('SELECT * FROM NOTES WHERE not_id_etu ="'.$_GET['id'].'" ORDER BY not_matiere ');
 ?>
 
 <body>
 
 	<h1 class="starter-template">Notes de l'élève</h1>
 
+	<div class="container">
+
 	<div class="col">
 		<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#ajoutNote">
 		  Ajouter une note
 		</button>
 	</div>
+
+	<div class="col mt-3">
+		
+		<table class="table table-striped">
+		  <thead>
+		    <tr>
+		      <th scope="col">Matière</th>
+		      <th scope="col">Date</th>
+		      <th scope="col">Note</th>
+		    </tr>
+		  </thead>
+
+<?php
+while ($donnees = $reponse->fetch())
+{
+?>
+
+		  <tbody>
+		    <tr>
+		      <td><?php echo $donnees['not_matiere']; ?></td>
+		      <td><?php echo $donnees['not_date']; ?></td>
+		      <td><?php echo $donnees['not_notes']; ?></td>
+		    </tr>
+		  </tbody>
+
+<?php
+}
+$reponse->closeCursor(); // Termine le traitement de la requête
+?>
+
+		</table>
+
+	</div>
+
+<?php
+	$reponse = $bdd->query('SELECT AVG(not_notes) AS moyenne FROM NOTES WHERE not_id_etu ="'.$_GET['id'].'" ');
+	while ($donnees = $reponse->fetch())
+	{
+		$moyenne = $donnees['moyenne'];
+	}
+	$reponse->closeCursor();
+?>
+	<div class="col mt-3">
+		<div class="card">
+		  <div class="card-body">
+		    <b>Moyenne générale :</b> <?php echo $moyenne; ?>
+		  </div>
+		</div>
+	</div>
+</div>
 </body>
 </html>
 
@@ -52,8 +105,7 @@ session_start();
       </div>
       <div class="modal-body">
       	
-        <?php $idEleve = $_GET['id']; ?>
-      	<form method="POST" action="addNotes.php?idElv=<?= $idEleve;?>">
+      	<form method="POST" action="addNotes.php?id=<?php echo $_GET['id']; ?>">
 		  <div class="form-group">
 		    <label>Matière</label>
 		    <select class="form-control" name="not_matiere">
@@ -81,7 +133,7 @@ session_start();
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
         <button type="submit" class="btn btn-primary">Sauvegarder</button>
-        </form>
+      </form>
       </div>
     </div>
   </div>
